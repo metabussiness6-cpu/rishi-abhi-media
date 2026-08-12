@@ -88,7 +88,13 @@
         }
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
         
-        .hero-image img { width: 100%; border-radius: 20px; box-shadow: 0 0 50px rgba(0, 240, 255, 0.2); border: 1px solid rgba(0,240,255,0.3); }
+        /* 🔴 सिर्फ इस लाइन में जादुई चेंज हुआ है: डिब्बा हटाकर 3D होलोग्राम इफ़ेक्ट डाला है 🔴 */
+        .hero-image img { 
+            width: 110%; 
+            border: none; 
+            mix-blend-mode: screen; /* यह काले बैकग्राउंड को गायब कर देगा! */
+            filter: drop-shadow(0 0 30px rgba(0, 240, 255, 0.4));
+        }
 
         /* ---------------- 💰 सेक्शन 2: प्राइसिंग (The Core Strategy) ---------------- */
         .pricing-section {
@@ -189,9 +195,9 @@
             <a href="#pricing" class="btn-primary">EXPLORE PLANS <i class="fas fa-arrow-down"></i></a>
         </div>
         
-        <!-- डमी 3D/टेक इमेज (इसकी जगह तुम अपनी कोई भी हाई-क्वालिटी 3D इमेज लगा सकते हो) -->
+        <!-- 🔴 यहाँ 3D फ्लोटिंग होलोग्राफिक डिज़ाइन लगा दिया है (बिना किसी बॉक्स के!) 🔴 -->
         <div class="hero-image hidden">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" alt="3D Abstract Tech">
+            <img src="https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?auto=format&fit=crop&q=80&w=800" alt="Floating 3D Hologram">
         </div>
     </section>
 
