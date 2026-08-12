@@ -88,12 +88,33 @@
         }
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
         
-        /* 🔴 सिर्फ इस लाइन में जादुई चेंज हुआ है: डिब्बा हटाकर 3D होलोग्राम इफ़ेक्ट डाला है 🔴 */
-        .hero-image img { 
-            width: 110%; 
-            border: none; 
-            mix-blend-mode: screen; /* यह काले बैकग्राउंड को गायब कर देगा! */
-            filter: drop-shadow(0 0 30px rgba(0, 240, 255, 0.4));
+        /* 🔴 3D साइबरपंक एजेंसी लोगो का खतरनाक CSS 🔴 */
+        .cube-wrapper {
+            width: 100%; display: flex; justify-content: center; align-items: center; perspective: 1000px;
+        }
+        .cyber-cube {
+            width: 220px; height: 220px; position: relative; transform-style: preserve-3d;
+            animation: spinCube 12s infinite linear;
+        }
+        .cyber-face {
+            position: absolute; width: 220px; height: 220px;
+            background: rgba(0, 240, 255, 0.05); border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.3), inset 0 0 30px rgba(255, 0, 85, 0.3);
+            display: flex; justify-content: center; align-items: center;
+            font-family: 'Orbitron', sans-serif; font-size: 5rem; font-weight: 900;
+            color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink);
+            backdrop-filter: blur(5px);
+        }
+        .face-front  { transform: translateZ(110px); }
+        .face-back   { transform: rotateY(180deg) translateZ(110px); }
+        .face-right  { transform: rotateY(90deg) translateZ(110px); }
+        .face-left   { transform: rotateY(-90deg) translateZ(110px); }
+        .face-top    { transform: rotateX(90deg) translateZ(110px); border-color: var(--neon-pink); background: rgba(255, 0, 85, 0.05); }
+        .face-bottom { transform: rotateX(-90deg) translateZ(110px); border-color: var(--neon-pink); background: rgba(255, 0, 85, 0.05); }
+
+        @keyframes spinCube {
+            0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
         }
 
         /* ---------------- 💰 सेक्शन 2: प्राइसिंग (The Core Strategy) ---------------- */
@@ -115,7 +136,6 @@
             position: relative; overflow: hidden;
         }
 
-        /* लेवल 2 वाले कार्ड को हाईलाइट करने के लिए */
         .price-card.popular {
             border-color: var(--neon-pink);
             box-shadow: 0 0 40px rgba(255, 0, 85, 0.15), inset 0 0 20px rgba(255, 0, 85, 0.1);
@@ -195,9 +215,19 @@
             <a href="#pricing" class="btn-primary">EXPLORE PLANS <i class="fas fa-arrow-down"></i></a>
         </div>
         
-        <!-- 🔴 यहाँ 3D फ्लोटिंग होलोग्राफिक डिज़ाइन लगा दिया है (बिना किसी बॉक्स के!) 🔴 -->
+        <!-- 🔴 नया 3D साइबरपंक एजेंसी लोगो (TM) जो हवा में घूमेगा 🔴 -->
         <div class="hero-image hidden">
-            <img src="https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?auto=format&fit=crop&q=80&w=800" alt="Floating 3D Hologram">
+            <div class="cube-wrapper">
+                <div class="cyber-cube">
+                    <!-- TM = Trade Media -->
+                    <div class="cyber-face face-front">TM</div>
+                    <div class="cyber-face face-back">TM</div>
+                    <div class="cyber-face face-right">TM</div>
+                    <div class="cyber-face face-left">TM</div>
+                    <div class="cyber-face face-top"></div>
+                    <div class="cyber-face face-bottom"></div>
+                </div>
+            </div>
         </div>
     </section>
 
