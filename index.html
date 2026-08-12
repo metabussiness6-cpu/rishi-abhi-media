@@ -3,347 +3,283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Next-Gen VR Agency | 3D UI</title>
+    <title>TRADE MEDIA | Next-Gen IT Agency</title>
     
-    <!-- 🚀 फ्यूचरिस्टिक फोंट्स (Orbitron for headings, Inter for clean text) -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- एडवांस फोंट्स -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
     <style>
         :root {
             --neon-pink: #ff0055;
-            --dark-bg: #05020a;
+            --neon-blue: #00f0ff;
+            --dark-bg: #07030f;
+            --card-bg: rgba(20, 10, 30, 0.4);
             --text-main: #ffffff;
-            --text-dim: #8b8b99;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 0, 85, 0.5);
+            --text-dim: #9ba1b0;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--dark-bg);
             color: var(--text-main);
             overflow-x: hidden;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            /* सेंटर में हल्का पर्पल ग्लो (Radial Gradient) */
-            background-image: radial-gradient(circle at 50% 50%, rgba(50, 10, 60, 0.4) 0%, var(--dark-bg) 60%);
+            scroll-behavior: smooth;
         }
 
-        /* ---------------- 🔝 टॉप नेविगेशन बार (Header) ---------------- */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px 6%;
-            position: relative;
-            z-index: 100;
+        /* 🌌 फिक्स्ड बैकग्राउंड ग्लो और मैसिव एजेंसी टेक्स्ट */
+        .ambient-glow {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: radial-gradient(circle at 50% 30%, rgba(255, 0, 85, 0.15) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 80%, rgba(0, 240, 255, 0.1) 0%, transparent 50%);
+            z-index: -2; pointer-events: none;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-
-        .logo-icon {
-            width: 30px;
-            height: 30px;
-            background: var(--neon-pink);
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            box-shadow: 0 0 15px var(--neon-pink);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dim);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-main);
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
-        }
-
-        .explore-btn {
-            background: transparent;
-            color: var(--text-main);
-            border: none;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .explore-btn i { color: var(--neon-pink); transition: 0.3s; }
-        .explore-btn:hover i { transform: translateX(5px); }
-
-        /* ---------------- 🌌 विशाल बैकग्राउंड टेक्स्ट ---------------- */
         .huge-bg-text {
-            position: absolute;
-            top: 25%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 16vw;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.02);
-            white-space: nowrap;
-            z-index: 1;
-            letter-spacing: 10px;
-            pointer-events: none;
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-family: 'Orbitron', sans-serif; font-size: 15vw; font-weight: 900;
+            color: rgba(255, 255, 255, 0.02); white-space: nowrap;
+            letter-spacing: 15px; z-index: -1; pointer-events: none;
         }
 
-        /* ---------------- 🚀 मेन हीरो सेक्शन (Center 3D Element) ---------------- */
-        .hero-section {
-            position: relative;
-            z-index: 10;
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0 6%;
-            margin-top: -50px;
+        /* 🔝 ग्लास हेडर */
+        header {
+            position: fixed; top: 0; width: 100%; padding: 25px 6%;
+            background: rgba(7, 3, 15, 0.7); backdrop-filter: blur(20px);
+            display: flex; justify-content: space-between; align-items: center; z-index: 1000;
+            border-bottom: 1px solid rgba(255, 0, 85, 0.2);
         }
 
-        .main-3d-image {
-            width: 400px;
-            height: auto;
-            /* तैरने वाला एनिमेशन */
+        .logo { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 2px; display: flex; align-items: center; gap: 10px; }
+        .logo i { color: var(--neon-pink); text-shadow: 0 0 15px var(--neon-pink); }
+
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--neon-pink); text-shadow: 0 0 10px var(--neon-pink); }
+
+        /* ---------------- स्क्रॉल एनिमेशन क्लासेस (Scroll Reveal) ---------------- */
+        .hidden { opacity: 0; transform: translateY(60px); transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+        .show { opacity: 1; transform: translateY(0); }
+
+        /* ---------------- 🚀 सेक्शन 1: हीरो सेक्शन ---------------- */
+        .hero {
+            min-height: 100vh; padding: 150px 6% 50px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+
+        .hero-content { max-width: 600px; }
+        .hero-badge { display: inline-block; padding: 8px 20px; border: 1px solid var(--neon-pink); border-radius: 30px; font-size: 0.8rem; font-weight: 600; color: var(--neon-pink); margin-bottom: 25px; letter-spacing: 2px; text-transform: uppercase; box-shadow: 0 0 15px rgba(255,0,85,0.2); }
+        .hero-title { font-family: 'Orbitron', sans-serif; font-size: 4.5rem; line-height: 1.1; margin-bottom: 25px; text-transform: uppercase; }
+        .hero-title span { color: transparent; -webkit-text-stroke: 1.5px var(--neon-blue); text-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
+        .hero-desc { font-size: 1.1rem; color: var(--text-dim); line-height: 1.8; margin-bottom: 40px; }
+
+        .btn-primary {
+            background: var(--neon-pink); color: #fff; padding: 18px 40px; border: none; border-radius: 5px;
+            font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 2px; cursor: pointer;
+            transition: 0.3s; box-shadow: 0 0 25px rgba(255, 0, 85, 0.5); text-decoration: none; display: inline-block;
+        }
+        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 0 40px rgba(255, 0, 85, 0.8); background: #ff3377; }
+
+        .hero-image {
+            width: 45%;
             animation: float 6s ease-in-out infinite;
-            filter: drop-shadow(0 0 30px rgba(255, 0, 85, 0.3));
+        }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+        
+        .hero-image img { width: 100%; border-radius: 20px; box-shadow: 0 0 50px rgba(0, 240, 255, 0.2); border: 1px solid rgba(0,240,255,0.3); }
+
+        /* ---------------- 💰 सेक्शन 2: प्राइसिंग (The Core Strategy) ---------------- */
+        .pricing-section {
+            padding: 100px 6%; position: relative; z-index: 10;
+        }
+        
+        .section-header { text-align: center; margin-bottom: 70px; }
+        .section-header h2 { font-family: 'Orbitron', sans-serif; font-size: 3rem; margin-bottom: 15px; }
+        .section-header p { color: var(--text-dim); font-size: 1.1rem; }
+
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; align-items: center;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+        .price-card {
+            background: var(--card-bg); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px; padding: 50px 30px; text-align: center; transition: 0.4s;
+            position: relative; overflow: hidden;
         }
 
-        .main-learn-more {
-            position: absolute;
-            left: 15%;
-            top: 40%;
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.3);
-            color: var(--text-main);
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: 0.4s;
-            text-transform: uppercase;
-        }
-
-        .main-learn-more:hover {
+        /* लेवल 2 वाले कार्ड को हाईलाइट करने के लिए */
+        .price-card.popular {
             border-color: var(--neon-pink);
-            box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
-            background: rgba(255, 0, 85, 0.1);
+            box-shadow: 0 0 40px rgba(255, 0, 85, 0.15), inset 0 0 20px rgba(255, 0, 85, 0.1);
+            transform: scale(1.05);
         }
 
-        /* ---------------- 🎴 बॉटम ग्लास कार्ड्स (Neon Borders) ---------------- */
-        .cards-container {
-            position: absolute;
-            bottom: 5%;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 0 6%;
-            z-index: 20;
-        }
+        .price-card:hover { border-color: var(--neon-blue); box-shadow: 0 0 30px rgba(0, 240, 255, 0.3); transform: translateY(-10px); }
+        .price-card.popular:hover { border-color: var(--neon-pink); transform: scale(1.05) translateY(-10px); box-shadow: 0 0 50px rgba(255, 0, 85, 0.4); }
 
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            width: 450px;
-            /* निऑन ग्लो इफ़ेक्ट */
-            box-shadow: inset 0 0 20px rgba(255, 0, 85, 0.1), 0 10px 30px rgba(0,0,0,0.8);
-            transition: 0.4s ease;
-        }
+        .plan-name { font-family: 'Orbitron', sans-serif; color: var(--neon-blue); letter-spacing: 3px; font-size: 1rem; margin-bottom: 15px; }
+        .popular .plan-name { color: var(--neon-pink); }
+        
+        .plan-price { font-size: 3.5rem; font-weight: 800; margin-bottom: 30px; }
+        .plan-price span { font-size: 1.2rem; color: var(--text-dim); font-weight: 400; }
 
-        .glass-card:hover {
-            border-color: var(--neon-pink);
-            box-shadow: inset 0 0 30px rgba(255, 0, 85, 0.2), 0 0 30px rgba(255, 0, 85, 0.4);
-            transform: translateY(-5px);
-        }
+        .plan-features { list-style: none; margin-bottom: 40px; text-align: left; }
+        .plan-features li { margin-bottom: 15px; color: #ccc; display: flex; align-items: center; gap: 10px; font-size: 0.95rem; }
+        .plan-features li i { color: var(--neon-blue); }
+        .popular .plan-features li i { color: var(--neon-pink); }
 
-        .card-img-box {
-            width: 120px;
-            height: 120px;
-            background: rgba(0,0,0,0.5);
-            border-radius: 15px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .btn-outline {
+            background: transparent; border: 1px solid var(--neon-blue); color: #fff; padding: 15px 30px; border-radius: 5px; width: 100%;
+            font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; cursor: pointer; transition: 0.3s;
         }
+        .btn-outline:hover { background: rgba(0, 240, 255, 0.1); box-shadow: 0 0 20px rgba(0,240,255,0.4); }
+        
+        .popular .btn-outline { border-color: var(--neon-pink); background: var(--neon-pink); }
+        .popular .btn-outline:hover { background: #ff3377; box-shadow: 0 0 30px rgba(255,0,85,0.5); }
 
-        .card-img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        /* ---------------- 📱 सेक्शन 3: बॉटम कॉन्टैक्ट / फनल ---------------- */
+        .cta-section {
+            padding: 100px 6%; text-align: center; margin-bottom: 50px;
         }
-
-        .card-content {
-            flex: 1;
+        .cta-box {
+            background: linear-gradient(135deg, rgba(255,0,85,0.1), rgba(0,240,255,0.05));
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 70px 40px;
+            backdrop-filter: blur(20px); max-width: 900px; margin: 0 auto;
         }
-
-        .card-badge {
-            background: rgba(255, 0, 85, 0.15);
-            color: var(--neon-pink);
-            border: 1px solid var(--neon-pink);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-
-        .card-content p {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
-        .card-btn {
-            background: transparent;
-            border: 1px solid var(--text-dim);
-            color: var(--text-main);
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .card-btn i { font-size: 1rem; }
-
-        .card-btn:hover {
-            border-color: var(--neon-pink);
-            color: var(--neon-pink);
-        }
+        .cta-box h2 { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; margin-bottom: 20px; }
+        
+        footer { border-top: 1px solid rgba(255,255,255,0.1); padding: 30px 6%; text-align: center; color: var(--text-dim); font-size: 0.9rem; }
 
         /* मोबाइल रेस्पोंसिव */
         @media (max-width: 1024px) {
-            .cards-container { flex-direction: column; align-items: center; position: relative; bottom: 0; margin-top: 50px; padding-bottom: 50px;}
-            .main-learn-more { left: 50%; top: 80%; transform: translateX(-50%); }
-            .huge-bg-text { font-size: 25vw; top: 15%; }
+            .hero { flex-direction: column; text-align: center; padding-top: 120px; }
+            .hero-image { width: 90%; margin-top: 50px; }
+            .huge-bg-text { font-size: 20vw; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .price-card.popular { transform: scale(1); }
+            .price-card.popular:hover { transform: translateY(-10px); }
             .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. विशाल डार्क बैकग्राउंड टेक्स्ट -->
-    <div class="huge-bg-text">VR BOXXX</div>
+    <!-- 🌌 विशाल डार्क एजेंसी बैकग्राउंड -->
+    <div class="ambient-glow"></div>
+    <div class="huge-bg-text">TRADE MEDIA</div>
 
-    <!-- 2. टॉप हेडर -->
+    <!-- 🔝 टॉप हेडर -->
     <header>
-        <div class="logo">
-            <div class="logo-icon"></div>
-            TRADE MEDIA
-        </div>
-        
+        <div class="logo"><i class="fas fa-cubes"></i> TRADE MEDIA</div>
         <nav class="nav-links">
-            <a href="#">Services</a>
-            <a href="#">Solutions</a>
-            <a href="#">Assets</a>
-            <a href="#">Agency</a>
+            <a href="#home">Home</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Start Project</a>
         </nav>
-        
-        <button class="explore-btn">Explore <i class="fas fa-play"></i></button>
     </header>
 
-    <!-- 3. मेन 3D करैक्टर सेक्शन -->
-    <main class="hero-section">
+    <!-- 🚀 सेक्शन 1: हीरो (Introduction) -->
+    <section class="hero hidden" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">Advanced IT & Meta Ads Agency</div>
+            <h1 class="hero-title">Digital<br><span>Dominance</span></h1>
+            <p class="hero-desc">We build lightning-fast, ultra-premium websites and execute highly targeted Meta Ad campaigns to scale your business to the next level.</p>
+            <a href="#pricing" class="btn-primary">EXPLORE PLANS <i class="fas fa-arrow-down"></i></a>
+        </div>
         
-        <button class="main-learn-more" onclick="sendToWhatsApp('Main Hero')">LEARN MORE</button>
-        
-        <!-- यहाँ तुम्हारी असली 3D लामा/करैक्टर की PNG आनी चाहिए (अभी डमी 3D रोबोट इमेज है) -->
-        <img src="https://images.unsplash.com/photo-1617802690992-15d93263d3a9?auto=format&fit=crop&q=80&w=600" alt="3D Main Avatar" class="main-3d-image" style="border-radius: 20px; box-shadow: 0 0 50px rgba(255,0,85,0.2);">
+        <!-- डमी 3D/टेक इमेज (इसकी जगह तुम अपनी कोई भी हाई-क्वालिटी 3D इमेज लगा सकते हो) -->
+        <div class="hero-image hidden">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" alt="3D Abstract Tech">
+        </div>
+    </section>
 
-    </main>
-
-    <!-- 4. बॉटम ग्लास कार्ड्स (निऑन बॉर्डर के साथ) -->
-    <div class="cards-container">
-        
-        <!-- कार्ड 1 (जैसे वीडियो में भालू वाला है) -->
-        <div class="glass-card">
-            <div class="card-img-box">
-                <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&q=80&w=200" alt="Avatar 1">
-            </div>
-            <div class="card-content">
-                <div class="card-badge">LEVEL 1 LIGHT</div>
-                <p>This package offers sharp visuals and a comfortable fit, perfect for startups, agencies, and virtual setups.</p>
-                <button class="card-btn" onclick="sendToWhatsApp('Level 1 Plan')">LEARN MORE <i class="fas fa-arrow-circle-right"></i></button>
-            </div>
+    <!-- 💰 सेक्शन 2: प्राइसिंग (The Core Strategy) -->
+    <section class="pricing-section" id="pricing">
+        <div class="section-header hidden">
+            <h2>AGENCY PRICING</h2>
+            <p>Transparent pricing. No hidden fees. Pure performance.</p>
         </div>
 
-        <!-- कार्ड 2 (जैसे वीडियो में वुल्फ वाला है) -->
-        <div class="glass-card">
-            <div class="card-img-box">
-                <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&q=80&w=200" alt="Avatar 2">
-            </div>
-            <div class="card-content">
-                <div class="card-badge">PRO 2 LIGHT</div>
-                <p>Featuring advanced motion tracking, ultra-high definition graphics and a wide field of view.</p>
-                <button class="card-btn" onclick="sendToWhatsApp('Pro Level 2 Plan')">LEARN MORE <i class="fas fa-arrow-circle-right"></i></button>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- WhatsApp API इंटीग्रेशन (ताकि तुम्हारा लीड जनरेशन चलता रहे) -->
-    <script>
-        function sendToWhatsApp(planName) {
-            // तुम्हारा नंबर
-            const phoneNumber = "917877446770"; 
+        <div class="pricing-grid">
             
-            // क्लाइंट के लिए रेडीमेड मैसेज
-            const whatsappMessage = `*New 3D Agency Lead!* 🚀\n\nHi Trade Media Team, I visited your advanced website and I am interested in knowing more about: *${planName}*.\n\nPlease share the details!`;
+            <!-- प्लान 1: ₹4999 -->
+            <div class="price-card hidden">
+                <div class="plan-name">LEVEL 1: BASIC</div>
+                <div class="plan-price">₹4,999<span>/one-time</span></div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check-circle"></i> 1 to 3 Pages Fast Website</li>
+                    <li><i class="fas fa-check-circle"></i> Mobile Responsive Design</li>
+                    <li><i class="fas fa-check-circle"></i> Direct WhatsApp Integration</li>
+                    <li><i class="fas fa-check-circle"></i> Basic Hosting Setup</li>
+                </ul>
+                <button class="btn-outline" onclick="sendToWhatsApp('Level 1: Basic (₹4,999)')">SELECT PLAN</button>
+            </div>
 
+            <!-- प्लान 2: ₹9999 (Most Popular) -->
+            <div class="price-card popular hidden">
+                <div class="plan-name">LEVEL 2: MEDIUM</div>
+                <div class="plan-price">₹9,999<span>/one-time</span></div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check-circle"></i> 5 Pages Premium 3D Design</li>
+                    <li><i class="fas fa-check-circle"></i> Custom Lead Capture Forms</li>
+                    <li><i class="fas fa-check-circle"></i> Advanced UI Animations</li>
+                    <li><i class="fas fa-check-circle"></i> SEO Ready Structure</li>
+                </ul>
+                <button class="btn-outline" onclick="sendToWhatsApp('Level 2: Medium (₹9,999)')">START PROJECT NOW</button>
+            </div>
+
+            <!-- प्लान 3: ₹19999 -->
+            <div class="price-card hidden">
+                <div class="plan-name">LEVEL 3: ADVANCED</div>
+                <div class="plan-price">₹19,999<span>/one-time</span></div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check-circle"></i> Custom 3D & WebGL Graphics</li>
+                    <li><i class="fas fa-check-circle"></i> Payment Gateway Integration</li>
+                    <li><i class="fas fa-check-circle"></i> Advanced Hybrid Pixel Setup</li>
+                    <li><i class="fas fa-check-circle"></i> 48-Hour VIP Delivery</li>
+                </ul>
+                <button class="btn-outline" onclick="sendToWhatsApp('Level 3: Advanced (₹19,999)')">SELECT PLAN</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 📱 सेक्शन 3: बॉटम कॉल-टू-एक्शन -->
+    <section class="cta-section hidden" id="contact">
+        <div class="cta-box">
+            <h2>Need Meta Ads Management?</h2>
+            <p style="color: var(--text-dim); margin-bottom: 30px; font-size: 1.1rem;">Add our <strong>Growth Package (+₹5,000/month)</strong> and we will run highly converting Meta Ads for your business using our Anti-Ban Ghost Operations.</p>
+            <button class="btn-primary" onclick="sendToWhatsApp('Growth Package (Web + Meta Ads)')">DISCUSS ON WHATSAPP <i class="fab fa-whatsapp" style="font-size: 1.2rem; margin-left: 5px;"></i></button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Trade Media Agency. All rights reserved. Built for Dominance.</p>
+    </footer>
+
+    <!-- 🚀 जावास्क्रिप्ट: स्क्रॉल एनिमेशन और WhatsApp इंटीग्रेशन -->
+    <script>
+        // 1. Scroll Reveal Animation (जादुई इफ़ेक्ट)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+        // 2. WhatsApp API Logic (तुम्हारा नंबर: 917877446770)
+        function sendToWhatsApp(planName) {
+            const phoneNumber = "917877446770"; 
+            const whatsappMessage = `*New Agency Lead!* 🚀\n\nHi Trade Media Team, I visited your awesome website and I am interested in:\n*${planName}*\n\nPlease provide more details on how we can start!`;
+            
             const encodedMessage = encodeURIComponent(whatsappMessage);
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
-            // बटन दबाते ही सीधा WhatsApp खुलेगा
             window.open(whatsappUrl, '_blank');
         }
     </script>
