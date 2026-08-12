@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Agency | Elevate Your Brand</title>
+    <!-- एडवांस्ड प्रीमियम फोंट्स -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* 🌌 डायनामिक बैकग्राउंड (वीडियो जैसा फील) */
+        .background-wrapper {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') no-repeat center center/cover;
+            z-index: -1;
+            animation: bgZoom 20s infinite alternate linear;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%);
+            z-index: 0;
+        }
+
+        @keyframes bgZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        /* 🏗️ मेन लेआउट (Split Screen) */
+        .container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            min-height: 100vh;
+            padding: 40px 8%;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        /* 📝 लेफ्ट साइड - लार्ज टाइपोग्राफी (वीडियो स्टाइल) */
+        .text-section {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            animation: fadeRight 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #ff3366;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .main-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 5.5rem;
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .main-title span {
+            color: transparent;
+            -webkit-text-stroke: 1.5px #ffffff;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 450px;
+        }
+
+        /* 💎 राइट साइड - ग्लास फॉर्म (Glassmorphism) */
+        .form-section {
+            flex: 0.8;
+            min-width: 350px;
+            background: rgba(20, 20, 20, 0.4);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.2);
+            animation: fadeLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .form-header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        /* इनपुट फील्ड्स */
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-field::placeholder { color: #888; }
+
+        .input-field:focus {
+            border-color: #ff3366;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 15px rgba(255, 51, 102, 0.3);
+        }
+
+        textarea.input-field {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        select.input-field {
+            appearance: none;
+            cursor: pointer;
+        }
+
+        /* सबमिट बटन (Call to Action) */
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(45deg, #ff3366, #ff0033);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 10px 20px rgba(255, 51, 102, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 51, 102, 0.5);
+            background: linear-gradient(45deg, #ff0033, #cc0029);
+        }
+
+        /* 🎬 एनिमेशन कीफ्रेम्स */
+        @keyframes fadeRight {
+            0% { opacity: 0; transform: translateX(-50px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeLeft {
+            0% { opacity: 0; transform: translateX(50px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .container { flex-direction: column; padding: 40px 5%; justify-content: center; gap: 40px; }
+            .main-title { font-size: 3.5rem; }
+            .form-section { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-wrapper"></div>
+    <div class="overlay"></div>
+
+    <main class="container">
+        
+        <!-- लेफ्ट साइड: ब्रांडिंग -->
+        <div class="text-section">
+            <div class="subtitle">Next-Gen IT Agency</div>
+            <h1 class="main-title">Digital<br><span>Dominance.</span></h1>
+            <p class="description">We build premium, lightning-fast websites and set up highly converting Meta Ads for ambitious businesses.</p>
+        </div>
+
+        <!-- राइट साइड: WhatsApp लीड फॉर्म -->
+        <div class="form-section">
+            <h2 class="form-header">Let's Build It.</h2>
+            
+            <form id="whatsappForm" onsubmit="sendToWhatsApp(event)">
+                
+                <div class="input-group">
+                    <input type="text" id="clientName" class="input-field" placeholder="Your Name / Business Name" required>
+                </div>
+
+                <div class="input-group">
+                    <select id="businessCategory" class="input-field" required>
+                        <option value="" disabled selected>Select Your Business Category</option>
+                        <option value="Trading/Finance">Trading & Finance</option>
+                        <option value="Real Estate">Real Estate</option>
+                        <option value="E-Commerce">E-Commerce</option>
+                        <option value="Local Service">Local Services</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <select id="selectedPlan" class="input-field" required>
+                        <option value="" disabled selected>Which Service do you need?</option>
+                        <option value="Website (Level 1 - ₹4,999)">Website - Basic (₹4,999)</option>
+                        <option value="Website (Level 2 - ₹9,999)">Website - Premium (₹9,999)</option>
+                        <option value="Growth Combo (Web + Ads)">Combo: Website + Meta Ads Setup</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <textarea id="extraDetails" class="input-field" placeholder="Tell us more about your requirements... (Optional)"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    Send Request via WhatsApp
+                </button>
+            </form>
+        </div>
+
+    </main>
+
+    <!-- WhatsApp API लॉजिक -->
+    <script>
+        function sendToWhatsApp(e) {
+            e.preventDefault(); // फॉर्म को रीलोड होने से रोकता है
+            
+            // बटन का टेक्स्ट बदलना (लोड़िंग इफ़ेक्ट)
+            const btn = document.querySelector('.submit-btn');
+            btn.innerHTML = 'Redirecting... 🚀';
+            
+            // क्लाइंट का डेटा फॉर्म से उठाना
+            const name = document.getElementById('clientName').value;
+            const category = document.getElementById('businessCategory').value;
+            const plan = document.getElementById('selectedPlan').value;
+            const details = document.getElementById('extraDetails').value || "No extra details provided.";
+
+            // तुम्हारा WhatsApp नंबर (Country Code +91 के साथ)
+            const phoneNumber = "917877446770"; 
+
+            // WhatsApp के लिए कस्टम मैसेज तैयार करना
+            const whatsappMessage = `*New Project Lead!* 🚀\n\nHello Sir, I want to build a website/setup ads. Here are my details:\n\n*Name/Business:* ${name}\n*Category:* ${category}\n*Interested In:* ${plan}\n*Extra Requirements:* ${details}\n\nPlease let me know how we can proceed!`;
+
+            // मैसेज को URL के लिए एन्कोड करना
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+
+            // WhatsApp API लिंक जेनरेट करना
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            // 1 सेकंड के डिले के बाद WhatsApp खोलना (ताकि स्मूथ लगे)
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+                // फॉर्म रिसेट करना और बटन नार्मल करना
+                document.getElementById('whatsappForm').reset();
+                btn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Send Request via WhatsApp';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
